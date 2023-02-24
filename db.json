@@ -1,0 +1,31 @@
+{
+  "productList": [
+    {
+      "productName": "Apple",
+      "category": "Fruits",
+      "freshness": "Brand New",
+      "price": 1,
+      "comment": "fdsadsga",
+      "date": "2023-02-23T17:00:00.000Z",
+      "id": 1
+    },
+    {
+      "productName": "Banana",
+      "category": "Fruits",
+      "freshness": "Second Hand",
+      "price": 2,
+      "comment": "dsagfsa",
+      "date": "2023-02-16T17:00:00.000Z",
+      "id": 2
+    },
+    {
+      "productName": "Mango",
+      "category": "Fruits",
+      "freshness": "Brand New",
+      "price": 51,
+      "comment": "fdsagdsa",
+      "date": "2023-02-09T17:00:00.000Z",
+      "id": 3
+    }
+  ]
+}
