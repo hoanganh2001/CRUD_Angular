@@ -8,10 +8,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core'
 import {MatRadioModule} from '@angular/material/radio';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {  ReactiveFormsModule } from '@angular/forms';
 
 
 import { DialogComponent } from './dialog.component';
 import { DialogContentComponent } from './dialogContent/dialogContent.component';
+import { HomeComponent } from '../home/home/home.component';
 
 @NgModule({
   imports: [
@@ -22,8 +24,10 @@ import { DialogContentComponent } from './dialogContent/dialogContent.component'
     MatNativeDateModule,
     MatRadioModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
-  declarations: [DialogComponent, DialogContentComponent]
+  declarations: [DialogComponent, DialogContentComponent],
+  providers:[HomeComponent]
 })
 export class DialogModule { }

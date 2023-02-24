@@ -1,5 +1,6 @@
 <div mat-dialog-content>
-  <mat-form-field appearance="outline">
+  <form [formGroup]="productForm">
+    <mat-form-field appearance="outline">
     <mat-label>Product Name</mat-label>
     <input formControlName="productName" matInput placeholder="Name">
   </mat-form-field>
@@ -33,6 +34,7 @@
   </mat-form-field>
   <div mat-dialog-action [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <!-- <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProduct()">{{actionBtn}}</button> -->
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProduct()">{{actionBtn}}</button>
   </div>
+  </form>
 </div>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -6,40 +6,27 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
 
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import { DialogModule } from '@angular/cdk/dialog';
-import { matFormFieldAnimations, MatFormFieldModule } from '@angular/material/form-field';
+import { HomeModule } from './home/home/home.module';
+import { HomeComponent } from './home/home/home.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { DialogContentComponent } from './dialog/dialogContent/dialogContent.component';
+import { ProductComponent } from './product/product.component';
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
-  ],
+      ProductComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    HttpClientModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    DialogModule
+    BrowserAnimationsModule
   ],
   providers: [AppComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, HomeComponent, DialogComponent, DialogContentComponent],
 })
 export class AppModule { }
