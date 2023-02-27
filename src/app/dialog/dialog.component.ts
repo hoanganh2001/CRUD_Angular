@@ -1,4 +1,5 @@
 import { Component, Inject, inject } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -9,6 +10,7 @@ import { Component, Inject, inject } from '@angular/core';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent {
+
   constructor (){}
 
 }

@@ -1,22 +1,26 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ApiService } from 'src/app/services/api.service';
 import { DialogComponent } from '../dialog.component';
 
 @Component({
   selector: 'app-dialogContent',
   templateUrl: './dialogContent.component.html',
+  styleUrls: ['./dialogContent.component.scss'],
 })
 
 export class DialogContentComponent{
   freshnessList = ["Brand New", "Second Hand", "Refurbished"]
-  productForm !: FormGroup;
   actionBtn : string = "Save";
+  productForm !: FormGroup;
 
   constructor(
     private formBuilder : FormBuilder,
+    private api : ApiService,
     @Inject(MAT_DIALOG_DATA) public editData : any,
-    private dialogRef : MatDialogRef<DialogComponent>)  {}
+    private dialogRef : MatDialogRef<DialogComponent>,
+    )  {}
      ngOnInit(): void{
     this.productForm = this.formBuilder.group({
       productName : ['',Validators.required],
@@ -37,6 +41,37 @@ export class DialogContentComponent{
     }
   }
 
+  addProduct(){
+    if(!this.editData){
+      if(this.productForm.valid){
+        this.api.postProduct(this.productForm.value).subscribe({
+          next:(res)=>{
+            alert("Product added successfully!");
+            this.productForm.reset();
+            this.dialogRef.close('save');
+          },
+          error:()=>{
+            alert("Error while add product!")
+          }
+        })
+      }
+    } else {
+      this.updateProduct();
+    }
+  }
+  updateProduct(){
+    this.api.putProduct(this.productForm.value,this.editData.id)
+    .subscribe({
+      next:(res)=>{
+        alert("Product update Successfully");
+        this.productForm.reset();
+        this.dialogRef.close('update');
+      },
+      error:()=>{
+        alert("Error while updating the record!");
+      }
+    })
+  }
 
 
 }

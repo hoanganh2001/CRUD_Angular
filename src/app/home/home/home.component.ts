@@ -39,6 +39,19 @@ export class HomeComponent implements OnInit {
   }
 
 
+  getAllProducts() {
+    this.api.getProduct().subscribe({
+      next:(res)=>{
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error:(err)=>{
+        alert("Error while fetching the Records!");
+      }
+    })
+  }
+
   editProduct(row : any){
     this.dialog.open(DialogComponent,{
       width:'30%',
@@ -50,6 +63,18 @@ export class HomeComponent implements OnInit {
     })
   }
 
+
+  delProduct(row : any){
+    this.api.deleteProduct(row.id).subscribe({
+      next:(res)=>{
+        alert("Product delete Successfully")
+      },
+      error:()=>{
+        alert("Error while deleting the record!");
+      }
+    });
+    this.getAllProducts();
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
